@@ -1,0 +1,11 @@
+Package: DDLSA
+Type: Package
+Title: Statistical significance approximation in local similarity analysis of dependent time series data
+Version: 1.0
+Date: 2017-02-12
+Author: Fang Zhang
+Maintainer: Fang Zhang <zhangfang5638151@126.com>
+Description: A novel method is proposed to compute statistical significance of local similarity analysis of dependent data, referred to as DDLSA. This package contains the code to reproduce the results from the manuscript.
+Depends:MASS
+License: GPL (>= 2)
+
