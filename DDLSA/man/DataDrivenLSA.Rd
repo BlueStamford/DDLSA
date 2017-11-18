@@ -62,6 +62,7 @@
   # Another example of real data
   data(F4tongue)
   F4T <- as.matrix(F4tongue)
+  F4T <- t(apply(F4T, 1, function(x) x / apply(F4T, 2, sum)))
   length<-dim(F4T)[2]
   Count<-dim(F4T)[1]
   PairWiseSignificance <- matrix(0,Count,Count)
@@ -74,6 +75,9 @@
   # example of PML datasets
   data(PML)
   P <- as.matrix(PML)
+  env <- PML[1:13,]
+  OTU <- PML[14:75,]
+  P <- rbind(env, t(apply(OTU, 1, function(x) x / apply(OTU, 2, sum))))
   length_PML<-dim(P)[2]
   Count_PML<-dim(P)[1]
   PairWiseSignificance_PML <- matrix(0,Count_PML,Count_PML)
