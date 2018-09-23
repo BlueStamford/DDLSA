@@ -37,8 +37,8 @@ theoDistribution<-function(localScore,Length,Variance,maxDelay){
   return(theoAppro)
 }
 ##################################################################
-approSignificance<-function(x,y,maxDelay){
-  localScore <- LocalSimilarity(x,y,maxDelay,rankScale= TRUE)[1]
+approSignificance<-function(x,y,maxDelay,scale=TRUE){
+  localScore <- LocalSimilarity(x,y,maxDelay,rankScale=scale)[1]
   theoAppro <- theoDistribution(localScore, length(x),1,maxDelay)
   return(theoAppro)
 }
