@@ -21,20 +21,22 @@
 theoDistribution<-function(localScore,Length,Variance,maxDelay){
   normalizedLocalScore <- localScore/sqrt(Variance*Length)
   if (normalizedLocalScore == 0) {
-    theoAppro <- 1
+    theoAppro_new <- 1
     } else{
       partialSum <- rep(0,1000)
       partialSum[1] <- (1/normalizedLocalScore^2 + 1/(pi^2)) * exp(-pi^2/(2 * normalizedLocalScore^2))
       i <- 2
-      threshold <- 1
-      while (threshold > 1e-5){
+      theoAppro_diff <- 1
+      while (theoAppro_diff > 1e-5){
         threshold <- (1/normalizedLocalScore^2 + 1/((2*i - 1)^2*pi^2)) * exp(-(2*i-1)^2 * pi^2/(2*normalizedLocalScore^2))
         partialSum[i]<-partialSum[i-1] + threshold
+        theoAppro_old <- theoAppro
+        theoAppro_new <- 1-8^(2*maxDelay+1)*max(partialSum)^(2*maxDelay+1)
+        theoAppro_diff <- abs(theoAppro_old - theoAppro_new)
         i<-i+1
-      }
-      theoAppro<-1-8^(2*maxDelay+1)*max(partialSum)^(2*maxDelay+1)
+      } 
     }
-  return(theoAppro)
+  return(theoAppro_new)
 }
 ##################################################################
 approSignificance<-function(x,y,maxDelay,scale=TRUE){
