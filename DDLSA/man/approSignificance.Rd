@@ -8,7 +8,7 @@
   This function computes the approximated statistical significance of local similarity for two sequences.
 }
 \usage{
-  approSignificance(x, y, maxDelay)
+  approSignificance(x, y, maxDelay, scale=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,6 +18,8 @@
   \item{maxDelay}{
     maximum time shift allowed in computing LS score.
   }
+  \item{scale}
+   If TRUE, perform rankNormalization first.
 }
 \value{
   This function returns the approximated statistical significance(p-value) of local similarity of two time series x, y with maximal delay maxDelay.
@@ -37,4 +39,3 @@
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-
