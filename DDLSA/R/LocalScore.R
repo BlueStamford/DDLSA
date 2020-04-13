@@ -107,16 +107,15 @@ permutationTest <- function(x, y, numPermu=1000, maxDelay=3,scale=TRUE){
 		x <- rankNormalization(x)
 		y <- rankNormalization(y)
 	}
-    numTimePoints <- length(x)
+  numTimePoints <- length(x)
 	scoreMax1 <- LocalSimilarity(x, y, maxDelay)[1];
 	scoreArray[1] <- scoreMax1;
 	highScoreCnt <- 0;
 
 	for(idx in 1:numPermu)
 	{
-		dtt1 <- x[sample(numTimePoints)];
-		dtt2 <- y[sample(numTimePoints)];
-		scoreTmp <- LocalSimilarity(dtt1, dtt2, maxDelay)[1];
+    dtt1 <- x[sample(numTimePoints)]
+		scoreTmp <- LocalSimilarity(dtt1, y, maxDelay)[1];
 
 		scoreArray[idx+1] <- scoreTmp;
 		highScoreCnt <- highScoreCnt + (scoreTmp >= scoreMax1);
